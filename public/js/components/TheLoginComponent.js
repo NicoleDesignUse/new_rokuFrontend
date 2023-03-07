@@ -2,7 +2,7 @@ export default {
     name: 'TheLoginComponent',
     template: `
   <section class="container">
-  <button @click="tryRouterPush"> Check Nav </button>
+
     <div class="jumbotron">
         <h1>Welcome to Flashblack!</h1>
         <p class="lead">
@@ -12,17 +12,30 @@ export default {
 
     <section class="log-in">
       <label class="sr-only" for="inlineFormInputName">Name</label>
-      <input type="text" class="form-control" id="inlineFormInputName" placeholder="username" required>
+      <input v-model="username" type="text" class="form-control" id="inlineFormInputName" placeholder="username" required>
 
-      <label class="sr-only" for="inlineFormPassword">Name</label>
-      <input type="password" class="form-control" id="inlineFormPassword" placeholder="password" required>
+      <label class="sr-only" for="inlineFormPassword">Password</label>
+      <input v-model="password" type="password" class="form-control" id="inlineFormPassword" placeholder="password" required>
     </section>
 
-    <button
+    <button @click="tryLogIn"
         type="submit" 
         class="btn btn-primary login-submit"
       >Go!
     </button>
-  </section>
-</template>`
+  </section>`,
+
+  data() {
+    return {
+      password: '',
+      username: '',
+      authenticated: false
+    }
+  },
+
+  methods: {
+   tryLogIn() {
+    debugger;
+   }
+  }
 }
