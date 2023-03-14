@@ -1,0 +1,19 @@
+#main-header {
+    top: 0;
+}
+
+#render-container {
+    margin-top: 80px;
+}
+
+.login-submit {
+    margin-top: 1em;
+}
+
+.log-in label {
+    margin: 1em 0.5em 0.5em 0;
+}
+
+.missing-field {
+    border: 2px solid purple;
+}
