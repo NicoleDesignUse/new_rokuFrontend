@@ -23,17 +23,29 @@ export default {
         class="btn btn-primary login-submit"
       >Go!
     </button>
+
+    <!-- if the user doesnt exist in the database after we try to log them in, they might not exist. give the option to sign up -->
+    <button v-if="signUp" @click="trySignUp"
+        type="submit" 
+        class="btn btn-primary login-submit signUp"
+      >Join!
+    </button>
   </section>`,
 
   data() {
     return {
       password: '',
       username: '',
-      authenticated: false
+      authenticated: false,
+      signUp: false
     }
   },
 
   methods: {
+
+    trySignUp() {
+      debugger;
+    },
    tryLogIn() {
     //check to see if there are a username and password
     //and make sure there' no extra white space
@@ -84,7 +96,20 @@ export default {
     })
     .then(res => res.json())
     .then(data => {
-      debugger;
+      if (data.message == 'no user') {
+        // check for no user, and then provide a signup button
+        this.signUp = true;
+
+      }else if (data.message == 'wrong password') {
+        //password didnt match, try again
+        this.$refs['password'].classList.add('missing-field');
+
+      } else {
+        this.$emit('setauthenticated');
+        //save the user data locally on our system
+        window.localStorage.setItem('user', JSON.stringify(data.message.user));
+        this.$router.push({name: 'allusers'});
+      }
     })
     .catch(error => console.error(error))
    }

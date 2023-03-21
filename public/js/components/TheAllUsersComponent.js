@@ -4,16 +4,12 @@ export default {
     name: 'TheAllUsersComponent',
 
     template: `
-    <section>
-        <h1>All Users Should Show Up Here</h1>
+    <section class="user-panel">
+
         <h2>Who's Using Roku?</h2>
 
         <section>
-        <ul>
-            <li v-for="user in users">
-                <user :user="user"></user>
-            </li>
-        </ul>
+        <user v-for="user in users" :user="user"></user>
         </section>
     </section>
     `,

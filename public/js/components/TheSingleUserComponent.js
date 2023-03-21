@@ -4,11 +4,12 @@ export default {
     props: ['user'],
 
     template: `
-    <section>
-        <h1>{{user.username}}</h1>
-        <p> and maybe an avatar or something </p>
-        <button @click="navToHomePage">Go Home!</button>
-    </section>
+    <div @click="navToHomePage" class="card rounded userpanel">
+        <div class="card-body text-center">
+            <img :src='"images/" + user.avatar' class="rounded-circle img-fluid">
+            <p>{{user.username}}</p>
+        </div>
+    </div>
     `,
 
     methods: {
