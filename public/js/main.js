@@ -26,7 +26,7 @@ const router = VueRouter.createRouter({
 
         { 
             path: '/', //brower location bar looks like this
-            name: 'alluers', //for programmatiuc navigation
+            name: 'allusers', //for programmatiuc navigation
             component: AllUserPage // the component to render
         },
 
@@ -58,13 +58,42 @@ const router = VueRouter.createRouter({
   })
   
   // 5. Create and mount the root instance.
-  const app = Vue.createApp({
+//   const app = Vue.createApp({
+//     methods: {
+//         tryRouterPush() {
+//             //programmatic routing
+//             this.$router.push({
+//                 name: 'users'
+//             })
+//         }
+//     }
+//   });
+const app = Vue.createApp({
+
+    mounted() {
+        //cgecj fir a orevuiys kigub ub kicakstirafe
+        if (window.localStorage.getItem('user')) {
+            this.authenticated = true;
+            this.$router.push({name: 'allusers'});
+        }
+    }, 
+
+    data() {
+        return {
+            authenticated: false
+        }
+    },
+
     methods: {
-        tryRouterPush() {
-            //programmatic routing
-            this.$router.push({
-                name: 'users'
-            })
+        logUserOut() {
+            this.authenticated = false;
+            window.localStorage.removeItem('user');
+
+            this.$router.push({name: 'login'});
+        },
+
+        loggedIn() {
+            this.authenticated = true;
         }
     }
   });
