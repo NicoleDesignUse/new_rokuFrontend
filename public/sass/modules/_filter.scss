@@ -9,24 +9,24 @@
   display:         flex;
   justify-content: space-between;
   align-items:     center;
-  background: var(--oxford-blue);
+  background: var(--gunmetal-1);
   padding: 20px 30px;
   border-radius: 20px;
   margin-bottom: 30px;
 }
 
 .filter-bar select {
-  color: var(--white);
-  font-size: var(--fs-sm);
+  color: var(--rokuP);
+  font-size: var(--fs-7);
   margin-right: 15px;
   cursor: pointer;
 }
 
-.filter-bar option { background: var(--oxford-blue); }
+.filter-bar option { background: white; }
 
 .filter-radios {
   position: relative;
-  background: var(--rich-black-fogra-29);
+  background: var(--xiketic);
   padding: 10px;
   border-radius: 15px;
 }
@@ -36,24 +36,19 @@
 .filter-radios label {
   position: relative;
   margin: 0 10px;
-  font-size: var(--fs-sm);
   user-select: none;
   cursor: pointer;
   z-index: 10;
 }
 
 .filter-radios input:checked + label,
-.filter-radios label:hover { color: var(--light-azure); }
+.filter-radios label:hover { color: var(--gray-x); }
 
 input ~ .checked-radio-bg {
-  /**
-   * variable for changing position and size
-   * besed on radio checked 
-   */
+
   --width: 85px;
   --left:   5px;
 
-  background: var(--oxford-blue);
   position: absolute;
   top:    5px;
   left:   var(--left);
@@ -73,10 +68,6 @@ input ~ .checked-radio-bg {
 }
 
 
-/**
- * movies grid 
- */
-
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -85,9 +76,7 @@ input ~ .checked-radio-bg {
 }
 
 .movie-card {
-  /**
-   * variable for scaling overlay element on card hover 
-   */
+
   --scale: 0.8;
 
   cursor: pointer;

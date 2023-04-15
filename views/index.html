@@ -7,28 +7,146 @@
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="shortcut icon" href="./roku.svg" type="image/svg+xml"> 
+    <!-- 
+    - google font link
+     -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
     <!-- overiride file -  these rules would go in a sass file. but sass is not working in the lab's computer, so use this for now-->
     <link rel="stylesheet" href="/css/overrides.css">
-    <title>.: Roku Flashback :.</title>
+    <title>Roku Flashback</title>
 </head>
 <body>
     <main id="app">
-        <header id="main-header">
+        <header class="header" data-header>
+            <div class="container">
+        
+        
+            <img src="images/roku.svg" alt="Roku logo" width="90">
+            <button v-if="authenticated" @click="logUserOut" class="btn btn-primary"><i class="fas fa-power-off">Sign Out</i></button>
+              <!-- <div class="header-actions">
+        
+                <button class="btn btn-primary"><li @click="logUserOut"><i class="fas fa-power-off">Sign Out</i></li></button>
+        
+              </div>
+        
+              <button class="menu-open-btn" data-menu-open-btn>
+                <ion-icon name="reorder-two"></ion-icon>
+              </button>
+        
+              <nav class="navbar" data-navbar>
+        
+                <div class="navbar-top">
+        
+                    <img src="images/roku.svg" alt="Roku logo" width="90"><span>FlashBack</span>
+
+        
+                  <button class="menu-close-btn" data-menu-close-btn>
+                    <ion-icon name="close-outline"></ion-icon>
+                  </button>
+        
+                </div>
+        
+                <ul class="navbar-list">
+        
+                  <li>
+                    <a href="./index.html" class="navbar-link">Home</a>
+                  </li>
+        
+                  <li>
+                    <a href="#" class="navbar-link">Movie</a>
+                  </li>
+        
+                  <li>
+                    <a href="#" class="navbar-link">Tv Show</a>
+                  </li>
+        
+                </ul>
+
+              </nav>
+         -->
+            </div>
+          </header>
+<!--         
+        <header class="header container">
             <img src="images/roku.svg" alt="Roku logo" width="90"><span>FlashBack</span>
             <nav class="float-right">
                 <ul v-if="authenticated">
-                    <li><i class="fas fa-user-circle"></i></li>
-                    <li><i class="fas fa-cog"></i></li>
-                    <li @click="logUserOut"><i class="fas fa-power-off"></i></li>
+                    <li class="btn btn-primary"><i class="fas fa-user-circle"></i></li>
+                    <li class="btn btn-primary"><i class="fas fa-cog"></i></li>
+                    <li  class="btn btn-primary" @click="logUserOut"><i class="fas fa-power-off"></i></li>
                 </ul>
             </nav>
-        </header>
+        </header> -->
         <router-view @setauthenticated="loggedIn" id="render-container"></router-view>
+        
+
+
+  <!-- 
+    - #FOOTER
+  -->
+
+  <footer class="footer" v-if="authenticated">
+
+    <div class="footer-top">
+      <div class="container">
+
+        <div class="divider"></div>
+
+        <div class="quicklink-wrapper">
+
+          <ul class="quicklink-list">
+
+            <li>
+              <a href="#" class="quicklink-link">Faq</a>
+            </li>
+
+            <li>
+              <a href="#" class="quicklink-link">Help center</a>
+            </li>
+
+            <li>
+              <a href="#" class="quicklink-link">Terms of use</a>
+            </li>
+
+            <li>
+              <a href="#" class="quicklink-link">Privacy</a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+
+        <p class="copyright">
+          &copy; 2022 <a href="#">ROKU</a>. All Rights Reserved
+        </p>
+
+
+      </div>
+    </div>
+
+  </footer>
+
+
     </main>
     <!-- vue.js libaray -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://unpkg.com/vue-router@4"></script>
+
+    <!-- 
+    - ionicon link
+    -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="js/main.js" type="module" defer></script>
 </body>
 </html>
