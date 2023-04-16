@@ -52,11 +52,6 @@ export default {
 
             </div>
 
-            <button class="btn btn-primary">
-              <ion-icon name="play"></ion-icon>
-
-              <span>Watch now</span>
-            </button>
 
           </div>
 
@@ -233,14 +228,6 @@ export default {
             </li>
 
           </ul>
-
-        <div class="centerC">
-          
-            <button class="btnCenter btn-primary">
-            <span>MORE</span>
-            </button>
-            
-        </div>
         </div>
       </section>
 
@@ -723,7 +710,7 @@ export default {
       <!--
         - #MOVIES SECTION
       -->
-      <section class="movies">
+      <section class="movies container">
 
         <!--
           - filter bar
@@ -945,10 +932,6 @@ export default {
 
         </div>
 
-        <!--
-          - load more button
-        -->
-        <button class="btnCenter btn-primary">LOAD MORE</button>
 
       </section>
 
@@ -956,120 +939,6 @@ export default {
     </article>
   </main>
 
-
-
-
-
-  <!-- 
-    - #FOOTER
-  -->
-
-  <footer class="footer">
-
-    <div class="footer-top">
-      <div class="container">
-
-        <div class="footer-brand-wrapper">
-
-          <a href="./index.html" class="logo">
-            <img src="/images/rok.svg" alt="Roku logo">
-          </a>
-
-          <ul class="footer-list">
-
-            <li>
-              <a href="./index.html" class="footer-link">Home</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Movie</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">TV Show</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Web Series</a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">Pricing</a>
-            </li>
-
-          </ul>
-
-        </div>
-
-        <div class="divider"></div>
-
-        <div class="quicklink-wrapper">
-
-          <ul class="quicklink-list">
-
-            <li>
-              <a href="#" class="quicklink-link">Faq</a>
-            </li>
-
-            <li>
-              <a href="#" class="quicklink-link">Help center</a>
-            </li>
-
-            <li>
-              <a href="#" class="quicklink-link">Terms of use</a>
-            </li>
-
-            <li>
-              <a href="#" class="quicklink-link">Privacy</a>
-            </li>
-
-          </ul>
-
-          <ul class="social-list">
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-pinterest"></ion-icon>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
-
-          </ul>
-
-        </div>
-
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="container">
-
-        <p class="copyright">
-          &copy; 2022 <a href="#">ROKU</a>. All Rights Reserved
-        </p>
-
-
-      </div>
-    </div>
-
-  </footer>
 
 
 

@@ -99,26 +99,15 @@
    */
   
   @media (min-width: 768px) {
-  
-    /**
-     * CUSTOM PROPERTY
-     */
+
   
     :root {
   
-      /**
-       * typography
-       */
-  
+
       --fs-2: 36px;
   
     }
-  
-  
-  
-    /**
-     * REUSED STYLE
-     */
+
   
     .container { max-width: 720px; }
   
@@ -183,19 +172,7 @@
   
     .hero-content { margin-top: 90px; }
   
-  
-  
-    /**
-     * SERVICE
-     */
-  
-    .service-btn {
-      right: -20px;
-      padding: 40px 50px;
-    }  
-  
-    .service-content { padding-inline: 40px; }
-  
+
   
   
     /**
@@ -260,10 +237,7 @@
    */
   
   @media (min-width: 992px) {
-  
-    /**
-     * REUSED STYLE
-     */
+
   
     .container { max-width: 960px; }
   
@@ -311,10 +285,7 @@
     .overlay { display: none; }
   
   
-  
-    /**
-     * HERO
-     */
+
   
     .hero { background-position: right; }
   
@@ -324,12 +295,7 @@
       margin-top: 100px;
       max-width: 600px;
     }
-  
-  
-  
-    /**
-     * UPCOMING
-     */
+
   
     .upcoming .flex-wrapper {
       display: flex;
@@ -344,32 +310,6 @@
     .upcoming .movies-list > li { min-width: calc(33.33% - 20px); }
   
   
-  
-    /**
-     * SERVICE
-     */
-  
-    .service .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 70px;
-    }
-  
-    .service-content {
-      padding-inline: 0;
-      width: calc(100% - 470px);
-    }
-  
-    .service-banner { margin-bottom: 0; }
-  
-    .service-btn { right: 111px; }
-  
-  
-  
-    /**
-     * CTA
-     */
   
     .cta { text-align: left; }
   
@@ -390,12 +330,7 @@
       width: 100%;
     }
   
-  
-  
-    /**
-     * MOVIE DETAIL
-     */
-  
+
     .movie-detail { padding-bottom: 200px; }
   
     .movie-detail .container {
@@ -419,22 +354,12 @@
   
   
   
-  
-  /**
-   * responsive for large than 1200px screen
-   */
-  
   @media (min-width: 1200px) {
   
-    /**
-     * CUSTOM PROPERTY
-     */
-  
+
     :root {
   
-      /**
-       * typography
-       */
+
   
       --fs-1: 60px;
       --fs-4: 26px;
@@ -443,21 +368,13 @@
   
   
   
-    /**
-     * REUSED STYLE
-     */
   
     .container { max-width: 1320px; }
   
-    /* MOVIE CARD */
-  
+
     .movies-list { grid-template-columns: repeat(4, 1fr); }
   
   
-  
-    /**
-     * HEADER
-     */
   
     .navbar { margin-inline: auto; }
   
@@ -470,47 +387,18 @@
   
   
   
-    /**
-     * HERO
-     */
-  
     .hero .container { width: 1320px; }
   
   
-  
-    /**
-     * UPCOMING
-     */
+
   
     .upcoming .movies-list > li { min-width: calc(25% - 22.5px); }
+
   
-  
-  
-    /**
-     * SERVICE
-     */
-  
-    .service-content { width: calc(100% - 700px); }
-  
-    .service-btn { right: -20px; }
-  
-    .service-list,
-    .service-title { max-width: 480px; }
-  
-  
-  
-    /**
-     * CTA
-     */
   
     .cta .container { max-width: 1150px; }
   
-  
-  
-    /**
-     * MOVIE DETAIL
-     */
-  
+
     .movie-detail { padding-bottom: var(--section-padding); }
   
     .movie-detail-content { max-width: 620px; }
