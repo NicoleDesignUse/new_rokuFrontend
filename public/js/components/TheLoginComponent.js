@@ -1,36 +1,26 @@
 export default {
     name: 'TheLoginComponent',
     template: `
-  <section class="container">
+    <div class="login-container">
+  <h1 class="login-header">Sign In</h1>
+  <form>
+    <label class="sr-only" for="inlineFormInputName">Username</label>
+    <input ref="username" v-model="username" type="text" class="form-control login-input" id="inlineFormInputName" placeholder="username" required>
 
-    <div class="jumbotron">
-        <h1>Welcome to Flashblack!</h1>
-        <p class="lead">
-        Before revisiting your favourite movies, tv shows or music from yesteryear, please log in with a valid username and password.
-        </p>
+    <label class="sr-only" for="inlineFormPassword">Password</label>
+    <input  ref="password" v-model="password" type="password" class="form-control login-input" id="inlineFormPassword" placeholder="password" required>
+
+    <div class="signup-container">
+    <button  @click="tryLogIn" type="submit" class="btn btn-primary signUp">Sign In</button>
     </div>
+  </form>
 
-    <section class="log-in">
-      <label class="sr-only" for="inlineFormInputName">Name</label>
-      <input ref="username" v-model="username" type="text" class="form-control" id="inlineFormInputName" placeholder="username" required>
-
-      <label class="sr-only" for="inlineFormPassword">Password</label>
-      <input  ref="password" v-model="password" type="password" class="form-control" id="inlineFormPassword" placeholder="password" required>
-    </section>
-
-    <button @click="tryLogIn"
-        type="submit" 
-        class="btn btn-primary login-submit"
-      >Go!
-    </button>
-
-    <!-- if the user doesnt exist in the database after we try to log them in, they might not exist. give the option to sign up -->
-    <button v-if="signUp" @click="trySignUp"
-        type="submit" 
-        class="btn btn-primary login-submit signUp"
-      >Join!
-    </button>
-  </section>`,
+  <div class="signup-container">
+    <span class="signup-text">New to Roku?</span>
+    <a href="#" class="signup-link">Sign up now</a>
+  </div>
+</div>
+  `,
 
   data() {
     return {
