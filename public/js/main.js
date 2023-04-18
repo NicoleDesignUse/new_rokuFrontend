@@ -4,6 +4,8 @@ import LogInPage from './components/TheLoginComponent.js';
 import AllUserPage from './components/TheAllUsersComponent.js';
 import DefaultHome from './components/TheHomePage.js';
 import KidsHome from './components/TheKidsHomePage.js';
+import MovieDetail from './components/TheMovieDetail.js';
+import AdultsMovieDetail from './components/AdultsMovieDetail.js';
 //import ErrorPage from './modules/ErrorPage.js';
 
 const { createApp } = Vue; //import the createApp method from the Vue library
@@ -41,6 +43,22 @@ const router = VueRouter.createRouter({
             name: 'kidshome',
             component: KidsHome
         },
+
+        {
+            path: '/movie/:movie',
+            name: 'movieDetail',
+            component: MovieDetail,
+            props: (route) => ({ movie: JSON.parse(route.params.movie) })
+        },
+
+        {
+            path: '/adultmovie/:movie',
+            name: 'adultsMovieDetail',
+            component: AdultsMovieDetail,
+            props: (route) => ({ movie: JSON.parse(route.params.movie) })
+        }
+             
+          
         // { 
         //     path: '/users', //brower location bar looks like this
         //     name: 'users', //for programmatiuc navigation
