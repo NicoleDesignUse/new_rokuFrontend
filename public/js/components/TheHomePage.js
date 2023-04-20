@@ -6,6 +6,8 @@ export default {
       return {
           authenticated: false,
           adultsMovies: [],
+          newMovies: [],
+          tvSeries: [],
           kidsMovies: {}
       }
   },
@@ -67,13 +69,6 @@ export default {
 
         </div>
       </section>
-
-
-
-
-
-      <!-- 
-        - #UPCOMING
     
 
       <section class="upcoming">
@@ -84,162 +79,17 @@ export default {
             <div class="title-wrapper">
               <p class="section-subtitle">Online Streaming</p>
 
-              <h2 class="h2 section-title">Upcoming Movies</h2>
+              <h2 class="h2 section-title">Newly Released</h2>
             </div>
 
           </div>
 
           <ul class="movies-list  has-scrollbar">
 
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="/images/upcoming-1.png" alt="The Northman movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">The Northman</h3>
-                  </a>
-
-                  <time datetime="2022">2022</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">HD</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT137M">137 min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>8.5</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="/images/upcoming-2.png"
-                      alt="Doctor Strange in the Multiverse of Madness movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Doctor Strange in the Multiverse of Madness</h3>
-                  </a>
-
-                  <time datetime="2022">2022</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">4K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT126M">126 min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>NR</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="/images/upcoming-3.png" alt="Memory movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Memory</h3>
-                  </a>
-
-                  <time datetime="2022">2022</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">2K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="">N/A</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>NR</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="/images/upcoming-4.png"
-                      alt="The Unbearable Weight of Massive Talent movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">The Unbearable Weight of Massive Talent</h3>
-                  </a>
-
-                  <time datetime="2022">2022</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">HD</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT107M">107 min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>NR</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
+          <moviecard v-for="movie in newMovies" :movie="movie"></moviecard>
           </ul>
         </div>
-      </section>-->
+      </section>
 
 
 
@@ -266,12 +116,6 @@ export default {
 
 
 
-
-
-      <!-- 
-        - #TV SERIES
-      
-
       <section class="tv-series">
         <div class="container">
 
@@ -280,155 +124,11 @@ export default {
           <h2 class="h2 section-title">World Best TV Series</h2>
 
           <ul class="movies-list">
-
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="/images/series-1.png" alt="Moon Knight movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Moon Knight</h3>
-                  </a>
-
-                  <time datetime="2022">2022</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">2K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT47M">47 min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>8.6</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="/images/series-2.png" alt="Halo movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Halo</h3>
-                  </a>
-
-                  <time datetime="2022">2022</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">2K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT59M">59 min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>8.8</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="/images/series-3.png" alt="Vikings: Valhalla movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Vikings: Valhalla</h3>
-                  </a>
-
-                  <time datetime="2022">2022</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">2K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT51M">51 min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>8.3</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
-            <li>
-              <div class="movie-card">
-
-                <a href="./movie-details.html">
-                  <figure class="card-banner">
-                    <img src="/images/series-4.png" alt="Money Heist movie poster">
-                  </figure>
-                </a>
-
-                <div class="title-wrapper">
-                  <a href="./movie-details.html">
-                    <h3 class="card-title">Money Heist</h3>
-                  </a>
-
-                  <time datetime="2017">2017</time>
-                </div>
-
-                <div class="card-meta">
-                  <div class="badge badge-outline">4K</div>
-
-                  <div class="duration">
-                    <ion-icon name="time-outline"></ion-icon>
-
-                    <time datetime="PT70M">70 min</time>
-                  </div>
-
-                  <div class="rating">
-                    <ion-icon name="star"></ion-icon>
-
-                    <data>8.3</data>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-
+          <moviecard v-for="movie in tvSeries" :movie="movie"></moviecard>
           </ul>
 
         </div>
-      </section>-->
+      </section>
   
       <!--
         - #MOVIES SECTION
@@ -662,13 +362,16 @@ export default {
 
     created() {
       Promise.all([
-          fetch('https://imdb-api.com/API/AdvancedSearch/k_3wtcxe73?release_date=2001-01-01,2023-01-01&certificates=us:G'),
-          fetch('https://imdb-api.com/API/AdvancedSearch/k_3wtcxe73?release_date=2001-01-01,2023-01-01&certificates=us:PG,us:PG-13')
+          fetch('https://imdb-api.com/API/AdvancedSearch/k_3wtcxe73?release_date=2023-01-01,2023-04-15&certificates=us:PG,us:PG-13'),
+          fetch('https://imdb-api.com/API/AdvancedSearch/k_3wtcxe73?release_date=2001-01-01,2023-01-01&certificates=us:PG,us:PG-13'),
+          fetch('https://imdb-api.com/API/AdvancedSearch/k_3wtcxe73?title_type=tv_series&release_date=2022-01-01,2023-01-01'),
         ])
           .then(responses => Promise.all(responses.map(res => res.json())))
           .then(data => {
-            this.adultsMovies = data[1].results;
+            this.adultsMovies = data[1].results.slice(0, 20);
             console.log(this.adultsMovies);
+            this.newMovies = data[0].results.slice(0, 4);
+            this.tvSeries = data[2].results.slice(0, 4);
           })
           .catch(error => {
             console.log(error); // handle any errors
