@@ -29,7 +29,7 @@ export default {
             <h1 class="h1 hero-title">
               Let's Watch <strong>Dora The Explorer</strong>
             </h1>
-            <button class="btn btn-primary"><a href="#">Watch Now</a></button>
+            <!--<button class="btn btn-primary"><a href="#">Watch Now</a></button>-->
          
 
           </div>
@@ -70,12 +70,12 @@ export default {
 
     created() {
       Promise.all([
-          fetch('https://imdb-api.com/API/AdvancedSearch/k_3wtcxe73?release_date=2001-01-01,2023-01-01&certificates=us:G'),
+          fetch('https://imdb-api.com/API/AdvancedSearch/k_3wtcxe73?release_date=2019-01-01,2023-01-01&certificates=us:G'),
           fetch('https://imdb-api.com/API/AdvancedSearch/k_3wtcxe73?title_type=feature&release_date=2001-01-01,2023-01-01&certificates=us:PG,us:PG-13')
         ])
           .then(responses => Promise.all(responses.map(res => res.json())))
           .then(data => {
-            this.adultsMovies = data[0].results;
+            this.adultsMovies = data[0].results.slice(0, 48);
             console.log(this.adultsMovies);
           })
           .catch(error => {
