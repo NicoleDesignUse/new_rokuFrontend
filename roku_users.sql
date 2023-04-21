@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Mar 07, 2023 at 08:27 PM
--- Server version: 5.7.36
--- PHP Version: 7.4.26
+-- Host: localhost:8889
+-- Generation Time: Apr 21, 2023 at 10:27 PM
+-- Server version: 5.7.34
+-- PHP Version: 7.4.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,26 +27,44 @@ SET time_zone = "+00:00";
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` tinyint(4) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` tinyint(4) NOT NULL,
   `fname` varchar(10) NOT NULL,
   `lname` varchar(10) NOT NULL,
   `password` varchar(10) NOT NULL,
   `avatar` varchar(20) DEFAULT NULL,
-  `permissions` tinyint(4) NOT NULL,
-  `username` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `permissions` tinyint(11) NOT NULL,
+  `username` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `fname`, `lname`, `password`, `avatar`, `permissions`, `username`) VALUES
-(1, 't', 'vr', 'hopalong', 'default', 1, 'user1'),
-(2, 'n', 'nc', 'roccopuppy', 'default', 5, 'user2'),
-(3, 'e', 'em', 'kittyhello', 'default', 2, 'user3');
+(1, 't', 'vr', 'hopalong', 'sam.jpg', 1, 'sam'),
+(2, 'k', 'vr', 'hopalong1', 'michael.jpg', 5, 'michael'),
+(3, 's', 'vr', 'hopalong3', 'eve.jpg', 7, 'eve');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
