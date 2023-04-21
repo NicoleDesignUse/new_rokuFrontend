@@ -1928,3 +1928,11 @@ video {
   height: 100%;
 }
 
+.purple {
+  background-color: #8845bb;
+}
+
+.card-body p {
+  margin-top: 1em;
+  color: #333;
+}

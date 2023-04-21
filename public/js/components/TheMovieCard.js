@@ -17,9 +17,9 @@ export default {
     </router-link>
 
       <div class="title-wrapper">
-        <a href="./movie-details.html">
+      <router-link :to="{ name: 'movieDetail', params: { movie: JSON.stringify(movie) } }">
           <h3 class="card-title">{{movie.title}}</h3>
-        </a>
+          </router-link>
 
         <time datetime="2022">{{movie.description}}</time>
       </div>

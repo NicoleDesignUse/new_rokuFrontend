@@ -5,7 +5,7 @@ export default {
 
     template: `
     <div @click="navToHomePage" class="card rounded userpanel">
-        <div class="card-body text-center">
+    <div class="card-body text-center" :class="{ 'purple': user.permissions < 4 }">
             <img :src='"images/" + user.avatar' class="rounded-circle img-fluid">
             <p>{{user.username}}</p>
         </div>

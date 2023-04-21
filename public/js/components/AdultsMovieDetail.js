@@ -131,7 +131,7 @@ export default {
               <div>
                 <ion-icon name="calendar-outline"></ion-icon>
 
-                <time datetime="2021">{{movie.descrition}}</time>
+                <time datetime="2021">{{movie.description}}</time>
               </div>
 
               <div>
@@ -167,6 +167,7 @@ export default {
     `,
 
     mounted() {
+      
       const playPauseBtn = document.querySelector(".play-pause-btn")
 const theaterBtn = document.querySelector(".theater-btn")
 const fullScreenBtn = document.querySelector(".full-screen-btn")
