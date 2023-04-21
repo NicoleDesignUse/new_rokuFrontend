@@ -1,156 +1,200 @@
-import MovieCard from './AdultsMovieCard.js';
+import MovieCard from "./AdultsMovieCard.js"
+import SmallCard from "./SmallCard.js"
 export default {
     name: 'TheHomePageComponent',
 
     data() {
       return {
-          authenticated: false,
-          adultsMovies: [],
-          newMovies: [],
-          tvSeries: [],
-          kidsMovies: {}
+        authenticated: false,
+        adultsMovies: [],
+        newMovies: [],
+        tvSeries: [],
+        kidsMovies: {},
+        moviesFiltered: [],
+        selectedYear: "all years",
+        selectedGenre: "all genres",
       }
-  },
+    },
 
+    components: {
+      moviecard: MovieCard,
+      smallcard: SmallCard
+    },
+  
+    watch: {
+      selectedYear(newYear) {
+        this.fetchFilteredMovies(newYear, this.selectedGenre);
+      },
+      selectedGenre(newGenre) {
+        this.fetchFilteredMovies(this.selectedYear, newGenre);
+      },
+    },
+  
+    methods: {
+      fetchFilteredMovies(yearRange, genre) {
+        let url = 'https://imdb-api.com/API/AdvancedSearch/k_3wtcxe73?certificates=us:PG,us:PG-13';
+        if (yearRange !== "all years") {
+          const [startYear, endYear] = yearRange.split('-');
+          const startDate = `${startYear}-01-01`;
+          const endDate = `${endYear}-12-31`;
+          url += `&release_date=${startDate},${endDate}`;
+        }
+  
+        if (genre !== "all genres") {
+          url += `&genres=${genre}`;
+        }
+  
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            this.moviesFiltered = data.results.slice(0, 21);
+            console.log(this.moviesFiltered);
+          })
+          .catch(error => {
+            console.log(error); // handle any errors
+          });
+      },
+    },
+  
 
     template: `
     <main>
     <article>
 
-      <!-- 
-        - #HERO
-      -->
+    <!-- 
+    - #HERO
+  -->
 
-      <section class="hero">
-        <div class="container">
+  <section class="hero">
+    <div class="container">
 
-          <div class="hero-content">
+      <div class="hero-content">
 
-            <p class="hero-subtitle">Roku</p>
+        <p class="hero-subtitle">Roku</p>
 
-            <h1 class="h1 hero-title">
-              Unlimited <strong>Movie</strong>, TVs Shows, & More.
-            </h1>
+        <h1 class="h1 hero-title">
+          Unlimited <strong>Movie</strong>, TVs Shows, & More.
+        </h1>
 
-            <div class="meta-wrapper">
+        <div class="meta-wrapper">
 
-              <div class="badge-wrapper">
-                <div class="badge badge-fill">PG 18</div>
+          <div class="badge-wrapper">
+            <div class="badge badge-fill">PG 18</div>
 
-                <div class="badge badge-outline">HD</div>
-              </div>
-
-              <div class="ganre-wrapper">
-                <a href="#">Romance,</a>
-
-                <a href="#">Drama</a>
-              </div>
-
-              <div class="date-time">
-
-                <div>
-                  <ion-icon name="calendar-outline"></ion-icon>
-
-                  <time datetime="2022">2022</time>
-                </div>
-
-                <div>
-                  <ion-icon name="time-outline"></ion-icon>
-
-                  <time datetime="PT128M">128 min</time>
-                </div>
-
-              </div>
-
-            </div>
-
-
+            <div class="badge badge-outline">HD</div>
           </div>
 
-        </div>
-      </section>
-    
+          <div class="ganre-wrapper">
+            <a href="#">Romance,</a>
 
-      <section class="upcoming">
-        <div class="container">
+            <a href="#">Drama</a>
+          </div>
 
-          <div class="flex-wrapper">
+          <div class="date-time">
 
-            <div class="title-wrapper">
-              <p class="section-subtitle">Online Streaming</p>
+            <div>
+              <ion-icon name="calendar-outline"></ion-icon>
 
-              <h2 class="h2 section-title">Newly Released</h2>
+              <time datetime="2022">2022</time>
+            </div>
+
+            <div>
+              <ion-icon name="time-outline"></ion-icon>
+
+              <time datetime="PT128M">128 min</time>
             </div>
 
           </div>
 
-          <ul class="movies-list  has-scrollbar">
-
-          <moviecard v-for="movie in newMovies" :movie="movie"></moviecard>
-          </ul>
         </div>
-      </section>
 
 
+      </div>
+
+    </div>
+  </section>
 
 
-      <!-- 
-        - #TOP RATED
-      -->
+  <section class="upcoming">
+    <div class="container">
 
-      <section class="top-rated">
-        <div class="container">
+      <div class="flex-wrapper">
 
+        <div class="title-wrapper">
           <p class="section-subtitle">Online Streaming</p>
 
-          <h2 class="h2 section-title">Top Rated Movies</h2>
-
-
-          <ul class="movies-list">
-
-          <moviecard v-for="movie in adultsMovies" :movie="movie"></moviecard>
-          </ul>
-
+          <h2 class="h2 section-title">Newly Released</h2>
         </div>
-      </section>
+
+      </div>
+
+      <ul class="movies-list  has-scrollbar">
+
+      <moviecard v-for="movie in newMovies" :movie="movie"></moviecard>
+      </ul>
+    </div>
+  </section>
 
 
 
-      <section class="tv-series">
-        <div class="container">
 
-          <p class="section-subtitle">Best TV Series</p>
+  <!-- 
+    - #TOP RATED
+  -->
 
-          <h2 class="h2 section-title">World Best TV Series</h2>
+  <section class="top-rated">
+    <div class="container">
 
-          <ul class="movies-list">
-          <moviecard v-for="movie in tvSeries" :movie="movie"></moviecard>
-          </ul>
+      <p class="section-subtitle">Online Streaming</p>
 
-        </div>
-      </section>
+      <h2 class="h2 section-title">Top Rated Movies</h2>
+
+
+      <ul class="movies-list">
+
+      <moviecard v-for="movie in adultsMovies" :movie="movie"></moviecard>
+      </ul>
+
+    </div>
+  </section>
+
+
+
+  <section class="tv-series">
+    <div class="container">
+
+      <p class="section-subtitle">Best TV Series</p>
+
+      <h2 class="h2 section-title">World Best TV Series</h2>
+
+      <ul class="movies-list">
+      <moviecard v-for="movie in tvSeries" :movie="movie"></moviecard>
+      </ul>
+
+    </div>
+  </section>
+
   
       <!--
         - #MOVIES SECTION
-      
+      -->
       <section class="movies container">
 
         <div class="filter-bar">
 
           <div class="filter-dropdowns">
 
-            <select name="genre" class="genre">
+            <select name="genre" class="genre" v-model="selectedGenre">
               <option value="all genres">All genres</option>
               <option value="action">Action</option>
               <option value="adventure">Adventure</option>
-              <option value="animal">Animal</option>
               <option value="animation">Animation</option>
               <option value="biography">Biography</option>
             </select>
 
-            <select name="year" class="year">
+            <select name="year" class="year" v-model="selectedYear">
               <option value="all years">All the years</option>
-              <option value="2022">2022</option>
+              <option value="2022">2022-2023</option>
               <option value="2020-2021">2020-2021</option>
               <option value="2010-2019">2010-2019</option>
               <option value="2000-2009">2000-2009</option>
@@ -159,7 +203,7 @@ export default {
 
           </div>
 
-          <div class="filter-radios">
+          <!--<div class="filter-radios">
 
             <input type="radio" name="grade" id="featured" checked>
             <label for="featured">Featured</label>
@@ -172,192 +216,23 @@ export default {
 
             <div class="checked-radio-bg"></div>
 
-          </div>
+          </div>-->
 
         </div>
 
 
         <div class="movies-grid">
-        <div class="movie-card">
-
-        <a href="./movie-details.html">
-          <figure class="card-banner">
-            <img src="/images/series-4.png" alt="Money Heist movie poster">
-          </figure>
-        </a>
-
-        <div class="title-wrapper">
-          <a href="./movie-details.html">
-            <h3 class="card-title">Money Heist</h3>
-          </a>
-
-          <time datetime="2017">2017</time>
-        </div>
-
-        <div class="card-meta">
-          <div class="badge badge-outline">4K</div>
-
-          <div class="duration">
-            <ion-icon name="time-outline"></ion-icon>
-
-            <time datetime="PT70M">70 min</time>
-          </div>
-
-          <div class="rating">
-            <ion-icon name="star"></ion-icon>
-
-            <data>8.3</data>
-          </div>
-        </div>
-
-      </div>
-      <div class="movie-card">
-
-      <a href="./movie-details.html">
-        <figure class="card-banner">
-          <img src="/images/series-4.png" alt="Money Heist movie poster">
-        </figure>
-      </a>
-
-      <div class="title-wrapper">
-        <a href="./movie-details.html">
-          <h3 class="card-title">Money Heist</h3>
-        </a>
-
-        <time datetime="2017">2017</time>
-      </div>
-
-      <div class="card-meta">
-        <div class="badge badge-outline">4K</div>
-
-        <div class="duration">
-          <ion-icon name="time-outline"></ion-icon>
-
-          <time datetime="PT70M">70 min</time>
-        </div>
-
-        <div class="rating">
-          <ion-icon name="star"></ion-icon>
-
-          <data>8.3</data>
-        </div>
-      </div>
-
-    </div>
-    <div class="movie-card">
-
-    <a href="./movie-details.html">
-      <figure class="card-banner">
-        <img src="/images/series-4.png" alt="Money Heist movie poster">
-      </figure>
-    </a>
-
-    <div class="title-wrapper">
-      <a href="./movie-details.html">
-        <h3 class="card-title">Money Heist</h3>
-      </a>
-
-      <time datetime="2017">2017</time>
-    </div>
-
-    <div class="card-meta">
-      <div class="badge badge-outline">4K</div>
-
-      <div class="duration">
-        <ion-icon name="time-outline"></ion-icon>
-
-        <time datetime="PT70M">70 min</time>
-      </div>
-
-      <div class="rating">
-        <ion-icon name="star"></ion-icon>
-
-        <data>8.3</data>
-      </div>
-    </div>
-
-  </div>
-  <div class="movie-card">
-
-  <a href="./movie-details.html">
-    <figure class="card-banner">
-      <img src="/images/series-4.png" alt="Money Heist movie poster">
-    </figure>
-  </a>
-
-  <div class="title-wrapper">
-    <a href="./movie-details.html">
-      <h3 class="card-title">Money Heist</h3>
-    </a>
-
-    <time datetime="2017">2017</time>
-  </div>
-
-  <div class="card-meta">
-    <div class="badge badge-outline">4K</div>
-
-    <div class="duration">
-      <ion-icon name="time-outline"></ion-icon>
-
-      <time datetime="PT70M">70 min</time>
-    </div>
-
-    <div class="rating">
-      <ion-icon name="star"></ion-icon>
-
-      <data>8.3</data>
-    </div>
-  </div>
-
-</div>
-
-<div class="movie-card">
-
-<a href="./movie-details.html">
-  <figure class="card-banner">
-    <img src="/images/series-4.png" alt="Money Heist movie poster">
-  </figure>
-</a>
-
-<div class="title-wrapper">
-  <a href="./movie-details.html">
-    <h3 class="card-title">Money Heist</h3>
-  </a>
-
-  <time datetime="2017">2017</time>
-</div>
-
-<div class="card-meta">
-  <div class="badge badge-outline">4K</div>
-
-  <div class="duration">
-    <ion-icon name="time-outline"></ion-icon>
-
-    <time datetime="PT70M">70 min</time>
-  </div>
-
-  <div class="rating">
-    <ion-icon name="star"></ion-icon>
-
-    <data>8.3</data>
-  </div>
-</div>
-
-</div>
+        <smallcard v-for="movie in moviesFiltered" :movie="movie"></smallcard>
 
 
         </div>
 
 
-      </section>-->
+      </section>
 
 
     </article>
   </main>
-
-
-
-
     `,
 
     created() {
@@ -376,10 +251,10 @@ export default {
           .catch(error => {
             console.log(error); // handle any errors
           });
-  },
+  }
 
-    components: {
-      moviecard: MovieCard
-  },
+
+    
+  
 
 }

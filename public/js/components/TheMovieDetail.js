@@ -129,7 +129,7 @@ export default {
               <div>
                 <ion-icon name="calendar-outline"></ion-icon>
 
-                <time datetime="2021">{{movie.descrition}}</time>
+                <time datetime="2021">{{movie.description}}</time>
               </div>
 
               <div>
